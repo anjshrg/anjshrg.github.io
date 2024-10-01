@@ -116,6 +116,62 @@
             color: #6e8efb;
             text-decoration: none;
         }
+
+        /* Media Queries for Laptops and Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .skills, .experience {
+                flex-direction: column;
+            }
+
+            .skill-card, .experience-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .section {
+                padding: 30px 5%;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toggle {
+                top: 15px;
+                right: 15px;
+                font-size: 1.2rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 20px 3%;
+            }
+
+            .skill-card h3, .experience-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .skill-card p, .experience-card p {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -221,5 +277,7 @@
             document.querySelectorAll('.experience-card').forEach(card => card.classList.toggle('dark-mode'));
         }
     </script>
+     <!-- Include the scroll animation script -->
+     <script src="scripts/scrollAnimation.js"></script>
 </body>
 </html>
