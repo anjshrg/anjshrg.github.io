@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Platform Engineer | 8+ Years of Experience</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -12,6 +14,7 @@
             padding: 0;
             background: #1c1b29;
             color: #fff;
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
         .header {
             text-align: center;
@@ -38,6 +41,7 @@
             width: 30%;
             border-radius: 10px;
             transition: transform 0.2s;
+            cursor: pointer;
         }
         .skill-card:hover {
             transform: scale(1.05);
@@ -49,6 +53,11 @@
         .skill-card p {
             font-size: 1rem;
             opacity: 0.8;
+        }
+        .skill-card i {
+            font-size: 2rem;
+            color: #6e8efb;
+            margin-bottom: 10px;
         }
         .projects {
             padding: 50px;
@@ -84,42 +93,77 @@
             color: #6e8efb;
             text-decoration: none;
         }
+        /* Sections for Each Category */
+        .category-section {
+            padding: 30px;
+            background: #2c2a3a;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .category-section h3 {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <div class="header">
-        <h1>John Doe</h1>
-        <p>Staff Software Engineer | Data Platforms & Infrastructure Expert</p>
+        <h1>Anuj Shirgaonkar</h1>
+        <p>Staff Software Engineer | Data Infra & Platforms</p>
     </div>
+
+    <!-- Skill Cards with Navigation -->
     <div class="skills">
-        <div class="skill-card">
+        <div class="skill-card" onclick="document.getElementById('data-infra').scrollIntoView()">
+            <i class="fas fa-database"></i>
             <h3>Data Infrastructure</h3>
-            <p>Building robust, scalable, and highly available data platforms on AWS, EMR, and other cloud environments.</p>
+            <p>Building robust, scalable, and highly available data platforms.</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" onclick="document.getElementById('data-pipelines').scrollIntoView()">
+            <i class="fas fa-project-diagram"></i>
             <h3>Data Pipelines</h3>
-            <p>Ingesting and processing real-time data using Spark, Kafka, and Hadoop with a focus on performance optimization.</p>
+            <p>Ingesting and processing real-time data using Spark, Kafka, and Hadoop.</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" onclick="document.getElementById('self-serve').scrollIntoView()">
+            <i class="fas fa-chart-bar"></i>
             <h3>Self-Serve Analytics</h3>
-            <p>Architecting self-serve platforms using tools like Trino, Superset, and Airflow, enabling business teams to explore data independently.</p>
+            <p>Architecting self-serve platforms using tools like Trino, Superset, and Airflow.</p>
         </div>
     </div>
+
+    <!-- Project Sections -->
     <div class="projects">
         <h2>Highlighted Projects</h2>
-        <div class="project-card">
-            <h3>Real-Time Data Streaming</h3>
-            <p>Ingested ~150GB/day from Oracle's GoldenGate into Kafka topics, processed using Spark micro-batches for a live dashboard with optimized execution times.</p>
+
+        <!-- Data Infrastructure Section -->
+        <div id="data-infra" class="category-section">
+            <h3>Data Infrastructure Projects</h3>
+            <div class="project-card">
+                <h3>Real-Time Data Streaming</h3>
+                <p>Ingested ~150GB/day from Oracle's GoldenGate into Kafka topics, processed using Spark micro-batches for a live dashboard with optimized execution times.</p>
+            </div>
         </div>
-        <div class="project-card">
-            <h3>Metadata Management Platform</h3>
-            <p>Implemented Observer pattern for metadata lineage tracking, allowing seamless downstream enrichment with automated trigger responses to metadata changes.</p>
+
+        <!-- Data Pipelines Section -->
+        <div id="data-pipelines" class="category-section">
+            <h3>Data Pipelines Projects</h3>
+            <div class="project-card">
+                <h3>Metadata Management Platform</h3>
+                <p>Implemented Observer pattern for metadata lineage tracking, allowing seamless downstream enrichment with automated trigger responses to metadata changes.</p>
+            </div>
         </div>
-        <div class="project-card">
-            <h3>Auto-Suggestion Chatbot</h3>
-            <p>Developed an Elasticsearch-backed chatbot with entity recognition and auto-suggestions, improving customer experience by 20%.</p>
+
+        <!-- Self-Serve Analytics Section -->
+        <div id="self-serve" class="category-section">
+            <h3>Self-Serve Analytics Projects</h3>
+            <div class="project-card">
+                <h3>Auto-Suggestion Chatbot</h3>
+                <p>Developed an Elasticsearch-backed chatbot with entity recognition and auto-suggestions, improving customer experience by 20%.</p>
+            </div>
         </div>
     </div>
+
+    <!-- Footer Section -->
     <div class="footer">
         <p>Find me on <a href="https://www.linkedin.com/in/johndoe">LinkedIn</a> | <a href="https://github.com/johndoe">GitHub</a></p>
     </div>
