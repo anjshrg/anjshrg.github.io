@@ -15,12 +15,20 @@
             background: #f5f5f5;
             color: #333;
             scroll-behavior: smooth;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background: #2c2c2c;
+            color: #fff;
         }
         .header {
             text-align: center;
             padding: 40px;
             background: #3e4e5e;
             color: #fff;
+        }
+        .header.dark-mode {
+            background: #222;
         }
         .header h1 {
             font-size: 2.5rem;
@@ -30,6 +38,20 @@
             font-size: 1.1rem;
             margin-top: 10px;
             opacity: 0.9;
+        }
+        .toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #fff;
+            transition: color 0.3s;
+        }
+        .toggle.dark-mode {
+            color: #ffdd57;
         }
         .section {
             padding: 50px 10%;
@@ -50,8 +72,15 @@
             width: 30%;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            transition: transform 0.2s, background 0.3s, color 0.3s;
             cursor: pointer;
+        }
+        .calendly-section {
+            text-align: center;
+            padding: 50px 10%;
+        }
+        .skill-card.dark-mode, .experience-card.dark-mode {
+            background: #444;
         }
         .skill-card:hover, .experience-card:hover {
             transform: scale(1.05);
@@ -78,6 +107,10 @@
             padding: 20px;
             background: #333;
             color: #fff;
+            transition: background 0.3s;
+        }
+        .footer.dark-mode {
+            background: #222;
         }
         .footer a {
             color: #6e8efb;
@@ -86,6 +119,11 @@
     </style>
 </head>
 <body>
+    <!-- Night Mode Toggle Button -->
+    <button class="toggle" onclick="toggleDarkMode()">
+        <i id="toggle-icon" class="fas fa-moon"></i>
+    </button>
+
     <!-- Header Section -->
     <div class="header">
         <h1>Anuj Shirgaonkar</h1>
@@ -119,17 +157,17 @@
         <h2>Experience</h2>
         <div class="experience">
             <div class="experience-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Navi_Technologies_logo.png" alt="Navi Logo">
+                <img src="img/navi-technologies.jpeg" alt="Navi Logo">
                 <h3>Navi Technologies | SDE 3, Data Platform</h3>
                 <p>Jul '21 - Present: Leading scalable platform solutions, EMR optimization, and data integration using modern data stacks like Airbyte and DBT.</p>
             </div>
             <div class="experience-card">
-                <img src="https://www.fractalanalytics.com/wp-content/uploads/2019/05/Fractal-Logo-Orange-on-White.png" alt="Fractal Logo">
+                <img src="img/FractalAnalytics-new-logo.png" alt="Fractal Logo">
                 <h3>Fractal Analytics | Senior Engineer, Big Data</h3>
                 <p>Apr '18 - Jun '21: Developed data lakes and real-time data pipelines, achieving significant performance boosts.</p>
             </div>
             <div class="experience-card">
-                <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Atos_Logo.svg" alt="Syntel Logo">
+                <img src="img/atos-syntel-vector-logo-small.png" alt="Syntel Logo">
                 <h3>Syntel | Software Engineer</h3>
                 <p>Dec '15 - Mar '18: Worked on Kafka, NiFi, and Hadoop for real-time data ingestion and processing.</p>
             </div>
@@ -162,5 +200,26 @@
     <div class="footer">
         <p>Connect on <a href="https://www.linkedin.com/in/anuj-shirgaonkar">LinkedIn</a> | <a href="https://github.com/anjshrg">GitHub</a></p>
     </div>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            
+            const toggleIcon = document.getElementById('toggle-icon');
+            if (body.classList.contains('dark-mode')) {
+                toggleIcon.classList.remove('fa-moon');
+                toggleIcon.classList.add('fa-sun');
+            } else {
+                toggleIcon.classList.remove('fa-sun');
+                toggleIcon.classList.add('fa-moon');
+            }
+            
+            document.querySelector('.header').classList.toggle('dark-mode');
+            document.querySelector('.footer').classList.toggle('dark-mode');
+            document.querySelectorAll('.skill-card').forEach(card => card.classList.toggle('dark-mode'));
+            document.querySelectorAll('.experience-card').forEach(card => card.classList.toggle('dark-mode'));
+        }
+    </script>
 </body>
 </html>
