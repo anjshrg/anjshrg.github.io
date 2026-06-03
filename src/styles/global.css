@@ -1,0 +1,198 @@
+/* ── Design tokens ─────────────────────────────────────────────
+   turbopuffer-inspired: warm paper, monospace, hairline rules,
+   no shadows, no rounded cards, generous whitespace.            */
+
+:root {
+  --bg:        #fbfaf8;
+  --fg:        #1a1916;
+  --muted:     #6b6862;
+  --faint:     #8d897f;
+  --line:      #e4e1d9;
+  --line-soft: #efece4;
+  --accent:    #2f6f6a;
+  --selection: #e7efed;
+
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --measure: 44rem;     /* content column */
+  --step:    1.5rem;    /* vertical rhythm unit */
+}
+
+:root[data-theme="dark"] {
+  --bg:        #14130f;
+  --fg:        #e9e6dc;
+  --muted:     #a09c91;
+  --faint:     #807c72;
+  --line:      #2b2922;
+  --line-soft: #211f19;
+  --accent:    #7fd1c8;
+  --selection: #233a37;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 0.9375rem;       /* 15px */
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--selection); }
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ── Top bar ──────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0 0;
+  font-size: 0.8125rem;
+}
+.topbar .id { color: var(--fg); }
+.topbar nav { display: flex; align-items: center; gap: 1.25rem; }
+.topbar nav a {
+  color: var(--muted);
+  border: none;
+}
+.topbar nav a:hover { color: var(--accent); }
+
+.icon-link {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+.icon-link svg { display: block; }
+.icon-link:hover { color: var(--accent); }
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  margin: -0.4rem -0.4rem -0.4rem 0;   /* tighten optical alignment */
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.theme-toggle:hover { color: var(--accent); background: var(--selection); }
+.theme-toggle svg { display: block; }
+
+/* Show the icon for the action the click performs:
+   light mode → moon (go dark); dark mode → sun (go light). */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"]  .theme-toggle .icon-sun  { display: block; }
+
+/* ── Sections ─────────────────────────────────────────────── */
+section { padding: calc(var(--step) * 2.2) 0; }
+section + section { border-top: 1px solid var(--line-soft); }
+
+.label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--faint);
+  margin-bottom: calc(var(--step) * 1.1);
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero { padding-top: calc(var(--step) * 2.6); }
+.hero h1 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+}
+.hero .role { color: var(--muted); margin-top: 0.4rem; }
+.hero p.lede {
+  margin: var(--step) 0 0;
+  max-width: 36rem;
+  color: var(--fg);
+}
+
+/* ── Entry lists (experience / work) ──────────────────────── */
+.entry {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1.25rem;
+  padding: calc(var(--step) * 0.9) 0;
+  border-top: 1px solid var(--line-soft);
+}
+.entry:first-of-type { border-top: none; }
+.entry .when { color: var(--faint); font-size: 0.8125rem; padding-top: 0.15rem; }
+.entry .what h3 { font-size: 0.9375rem; }
+.entry .what .org { color: var(--muted); }
+.entry .what p { margin: 0.4rem 0 0; color: var(--muted); }
+.entry .what ul {
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+.entry .what li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-top: 0.35rem;
+}
+.entry .what li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--faint);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer {
+  padding: calc(var(--step) * 2) 0 calc(var(--step) * 2.5);
+  border-top: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 0.8125rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  justify-content: space-between;
+}
+footer .links { display: flex; align-items: center; gap: 1.25rem; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .entry { grid-template-columns: 1fr; gap: 0.25rem; }
+  .entry .when { padding-top: 0; }
+  .hero h1 { font-size: 1.5rem; }
+}
